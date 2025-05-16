@@ -1,8 +1,9 @@
+import os
 import pandas as pd
 
-def load_excel(file_path: str):
-    """Load the Excel file and return a pandas DataFrame."""
-    df = pd.read_excel(file_path, engine='openpyxl')
-    # Strip any leading/trailing whitespace from the column names
-    df.columns = df.columns.str.strip()
-    return df
+def load_excel_file(file_path):
+    if not os.path.exists(file_path):
+        raise FileNotFoundError(f"File not found: {file_path}")
+    if not file_path.endswith(('.xlsx', '.xls')):
+        raise ValueError("Only .xlsx or .xls files are supported")
+    return pd.read_excel(file_path, engine="openpyxl")

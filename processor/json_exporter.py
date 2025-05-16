@@ -1,6 +1,6 @@
 import json
 
-def export_to_json(data, output_file='output.json'):
-    """Export the books data to a JSON file."""
-    with open(output_file, 'w') as json_file:
-        json.dump(data, json_file, indent=4)
+def export_json(data, filename="output.json"):
+    with open(filename, "w", encoding="utf-8") as f:
+        json.dump(data, f, ensure_ascii=False, indent=4)
+    print(f"Exported data to {filename}")
